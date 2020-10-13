@@ -41,7 +41,12 @@ class RaffleController extends Controller
         $raffle->name = $request->name;
         $raffle->user_id = auth()->user()->id;
 
-        $raffle->save();
+        try {
+          $raffle->save();
+          toastr()->success('Raffle created successfully');
+        } catch (\Illuminate\Database\QueryException $exception) {
+          toastr()->error('Failed to create Raffle ');
+        }
 
         return redirect()->route('raffle.index');
     }
