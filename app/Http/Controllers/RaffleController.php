@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class RaffleController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +15,8 @@ class RaffleController extends Controller
      */
     public function index()
     {
-        //
+        $raffles = auth()->user()->raffles;
+        return view('raffle.index', compact('raffles'));
     }
 
     /**
@@ -24,7 +26,7 @@ class RaffleController extends Controller
      */
     public function create()
     {
-        //
+        return view('raffle.create');
     }
 
     /**
@@ -35,7 +37,13 @@ class RaffleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $raffle = new Raffle;
+        $raffle->name = $request->name;
+        $raffle->user_id = auth()->user()->id;
+
+        $raffle->save();
+
+        return redirect()->route('raffle.index');
     }
 
     /**

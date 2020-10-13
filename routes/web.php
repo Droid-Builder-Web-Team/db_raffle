@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\RaffleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +20,8 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
+    Route::resource('raffle', RaffleController::class);
+});

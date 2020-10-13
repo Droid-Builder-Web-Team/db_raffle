@@ -18,6 +18,7 @@ class CreateResultsTable extends Migration
             $table->timestamps();
             $table->text('name');
             $table->text('prize');
+            $table->foreignId('raffle_id');
         });
     }
 
