@@ -10,9 +10,10 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
               <div class="card">
                 <div class="card-header">
-                  Edit Raffle - {{ $raffle->name }}
+                  Upload Raffle File- {{ $raffle->name }}
                 </div>
                 <div class="body">
+                  Upload name and prize lists. These should be a plain text file, with a name/prize per line.
                   <form action="{{ route('raffle.process') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="{{ $raffle->id}}">
@@ -24,7 +25,9 @@
                       <label for="rafflePrizes">Prizes</label>
                       <input type="file" id="rafflePrizes" name="prizes" class="form-control" required="">
                     </div>
-                    <input type="Submit" name="Submit" value="Submit">
+                    <div class="d-flex flex-row">
+                      <div class="p-2"><input type="Submit" name="Submit" value="Submit"></div>
+                    </div>
                 </div>
               </div>
             </div>

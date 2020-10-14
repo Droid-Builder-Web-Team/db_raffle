@@ -15,26 +15,34 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-6">
-                      <table>
-                        <tr>
-                          <td>Name</td>
-                          <td>Picked?</td>
-                        </tr>
-                          @foreach($names as $name)
-                            <tr><td>{{$name->name}}</td><td>{{ $name->picked }}</td></tr>
-                          @endforeach
-                      </table>
+                      <div class="table-responsive">
+                        <table class="table table-striped table-sm table-hover text-center">
+                          <tr>
+                            <td>Name</td>
+                            <td>Picked?</td>
+                          </tr>
+                            @foreach($names as $name)
+                              <tr><td>{{$name->name}}</td>
+                                <td><input type="checkbox" name="picked" {{ $name->picked == 1 ? 'checked="Yes"' : 'value=Yes' }} class="form-control"></td>
+                              </tr>
+                            @endforeach
+                        </table>
+                      </div>
                     </div>
                     <div class="col-md-6">
-                      <table>
-                        <tr>
-                          <td>Prize</td>
-                          <td>Picked?</td>
-                        </tr>
-                          @foreach($prizes as $prize)
-                            <tr><td>{{$prize->name}}</td><td>{{ $prize->picked }}</td></tr>
-                          @endforeach
-                      </table>
+                      <div class="table-responsive">
+                        <table class="table table-striped table-sm table-hover text-center">
+                          <tr>
+                            <td>Prize</td>
+                            <td>Picked?</td>
+                          </tr>
+                            @foreach($prizes as $prize)
+                              <tr><td>{{$prize->name}}</td>
+                                <td><input type="checkbox" name="picked" {{ $prize->picked == 1 ? 'checked="Yes"' : 'value=Yes' }} class="form-control"></td>
+                              </tr>
+                            @endforeach
+                        </table>
+                      </div>
                     </div>
                   </div>
                 </div>

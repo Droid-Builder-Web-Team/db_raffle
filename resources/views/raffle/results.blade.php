@@ -17,21 +17,27 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
               <div class="card">
                 <div class="card-header">
-                  View Raffle - {{ $raffle->name}}
-                  <span data-href="{{ route('raffle.export', $raffle->id )}}" id="export" class="btn btn-success btn-sm align-right" onclick="exportResults(event.target);">Export</span>
+                  View Raffle Results - {{ $raffle->name}}
                 </div>
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-12">
-                      <table>
-                        <tr>
-                          <td>Name</td>
-                          <td>Prize</td>
-                        </tr>
-                          @foreach($results as $result)
-                            <tr><td>{{$result->name}}</td><td>{{ $result->prize }}</td></tr>
-                          @endforeach
-                      </table>
+                      <div class="table-responsive">
+                        <table class="table table-striped table-sm table-hover text-center">
+                          <tr>
+                            <td>Name</td>
+                            <td>Prize</td>
+                          </tr>
+                            @foreach($results as $result)
+                              <tr><td>{{$result->name}}</td><td>{{ $result->prize }}</td></tr>
+                            @endforeach
+                        </table>
+                      </div>
+                      <div class="d-flex flex-row">
+                        <div class="p-2">
+                          <span data-href="{{ route('raffle.export', $raffle->id )}}" id="export" class="btn btn-success btn-sm align-right" onclick="exportResults(event.target);">Export</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
