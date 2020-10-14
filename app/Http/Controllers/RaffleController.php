@@ -176,7 +176,8 @@ class RaffleController extends Controller
           'name' => $name->name,
           'names_left' => $names_left,
           'prize' => $prize->name,
-          'prizes_left' => $prizes_left
+          'prizes_left' => $prizes_left,
+          'total_prizes' => $raffle->prizes->count()
         ];
 
         $result = new Result;

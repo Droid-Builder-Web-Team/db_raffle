@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-draw-layout>
 
   <script>
   function updateDraw() {
@@ -33,7 +33,7 @@
   </script>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Raffles') }}
+            <a href="{{route('raffle.index')}}">Droid Builders Raffle Draw</a>
         </h2>
     </x-slot>
 
@@ -74,4 +74,4 @@
         </div>
 
 
-</x-app-layout>
+</x-draw-layout>
