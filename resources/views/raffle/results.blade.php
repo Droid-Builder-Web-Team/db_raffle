@@ -1,4 +1,11 @@
 <x-app-layout>
+
+  <script>
+   function exportResults(_this) {
+      let _url = $(_this).data('href');
+      window.location.href = _url;
+   }
+</script>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Raffles') }}
@@ -11,6 +18,7 @@
               <div class="card">
                 <div class="card-header">
                   View Raffle - {{ $raffle->name}}
+                  <span data-href="{{ route('raffle.export', $raffle->id )}}" id="export" class="btn btn-success btn-sm align-right" onclick="exportResults(event.target);">Export</span>
                 </div>
                 <div class="card-body">
                   <div class="row">

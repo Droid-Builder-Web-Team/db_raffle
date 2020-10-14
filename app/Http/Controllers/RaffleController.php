@@ -226,4 +226,42 @@ class RaffleController extends Controller
 
         return back();
     }
+
+    public function export($raffle_id)
+    {
+        $raffle = Raffle::find($raffle_id);
+        if (auth()->user()->id != $raffle->user_id)
+                    abort(403);
+
+        $fileName = 'results.csv';
+        $results = Result::where('raffle_id', $raffle_id)->get();
+
+        $headers = array(
+              "Content-type"        => "text/csv",
+              "Content-Disposition" => "attachment; filename=$fileName",
+              "Pragma"              => "no-cache",
+              "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+              "Expires"             => "0"
+        );
+
+        $columns = array('Raffle Date', 'Raffle Name', 'Winner', 'Prize');
+
+        $callback = function() use($results, $columns, $raffle) {
+              $file = fopen('php://output', 'w');
+              fputcsv($file, $columns);
+
+              foreach ($results as $result) {
+                  $row['Raffle Date']  = $raffle->created_at;
+                  $row['Raffle Name']    = $raffle->name;
+                  $row['Winner']    = $result->name;
+                  $row['Prize']  = $result->prize;
+
+                  fputcsv($file, array($row['Raffle Date'], $row['Raffle Name'], $row['Winner'], $row['Prize']));
+              }
+
+              fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
 }

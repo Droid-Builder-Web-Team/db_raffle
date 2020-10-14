@@ -28,5 +28,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::get('raffle/reset/{id}', [RaffleController::class, 'reset'])->name('raffle.reset');
     Route::get('raffle/view/{id}', [RaffleController::class, 'view'])->name('raffle.view');
     Route::get('raffle/results/{id}', [RaffleController::class, 'results'])->name('raffle.results');
+    Route::get('raffle/export/{id}', [RaffleController::class, 'export'])->name('raffle.export');
     Route::resource('raffle', RaffleController::class);
 });
