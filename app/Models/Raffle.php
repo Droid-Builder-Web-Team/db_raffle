@@ -14,6 +14,16 @@ class Raffle extends Model
         return $this->hasMany('App\Models\Name');
     }
 
+    public function names_left()
+    {
+        return $this->hasMany('App\Models\Name')->where('picked', 0);
+    }
+
+    public function prizes_left()
+    {
+        return $this->hasMany('App\Models\Prize')->where('picked', 0);
+    }
+
     public function prizes()
     {
         return $this->hasMany('App\Models\Prize');

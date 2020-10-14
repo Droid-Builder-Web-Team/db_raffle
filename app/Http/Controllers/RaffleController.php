@@ -164,9 +164,19 @@ class RaffleController extends Controller
         $prize->picked = 1;
         $prize->save();
 
+        $names_left = Name::where('raffle_id', $raffle_id)
+                      ->where('picked', 0)
+                      ->count();
+
+        $prizes_left = Prize::where('raffle_id', $raffle_id)
+                      ->where('picked', 0)
+                      ->count();
+
         $draw = [
           'name' => $name->name,
-          'prize' => $prize->name
+          'names_left' => $names_left,
+          'prize' => $prize->name,
+          'prizes_left' => $prizes_left
         ];
 
         $result = new Result;
