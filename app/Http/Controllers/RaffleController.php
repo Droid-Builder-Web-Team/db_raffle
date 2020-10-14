@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Raffle;
 use App\Models\Name;
 use App\Models\Prize;
+use App\Models\Result;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -62,7 +63,7 @@ class RaffleController extends Controller
      */
     public function show(Raffle $raffle)
     {
-        //
+        return view('raffle.show', compact('raffle'));
     }
 
     /**
@@ -96,7 +97,7 @@ class RaffleController extends Controller
         {
             while (($name = fgets($names, 4096)) !== false ) {
               $new_name = new Name;
-              $new_name->name = $name;
+              $new_name->name = trim($name);
               $new_name->picked = 0;
               $new_name->raffle_id = $request->id;
               $new_name->save();
@@ -112,7 +113,7 @@ class RaffleController extends Controller
         {
             while (($prize = fgets($prizes, 4096)) !== false ) {
               $new_prize = new Prize;
-              $new_prize->name = $name;
+              $new_prize->name = trim($prize);
               $new_prize->picked = 0;
               $new_prize->raffle_id = $request->id;
               $new_prize->save();
@@ -135,5 +136,38 @@ class RaffleController extends Controller
     public function destroy(Raffle $raffle)
     {
         //
+    }
+
+    public function draw($raffle_id)
+    {
+
+        $name = Name::where('raffle_id', $raffle_id)
+                      ->where('picked', 0)
+                      ->inRandomOrder()
+                      ->limit(1)
+                      ->first();
+        $name->picked = 1;
+        $name->save();
+
+        $prize = Prize::where('raffle_id', $raffle_id)
+                      ->where('picked', 0)
+                      ->inRandomOrder()
+                      ->limit(1)
+                      ->first();
+        $prize->picked = 1;
+        $prize->save();
+
+        $draw = [
+          'name' => $name->name,
+          'prize' => $prize->name
+        ];
+
+        $result = new Result;
+        $result->name = $name->name;
+        $result->prize = $prize->name;
+        $result->raffle_id = $raffle_id;
+        $result->save();
+
+        return $draw;
     }
 }

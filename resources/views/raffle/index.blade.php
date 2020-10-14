@@ -27,7 +27,7 @@
                     <td>{{ $raffle->created_at }}</td>
                     <td>
                       <a class="btn-sm btn-info" href="{{ route('raffle.edit', $raffle->id) }}">Edit</a>
-                      <a class="btn-sm btn-info" href="">Draw</a>
+                      <a class="btn-sm btn-info" href="{{ route('raffle.show', $raffle->id) }}">Draw</a>
                       <a class="btn-sm btn-info" href="">Results</a>
                       <a class="btn-sm btn-info" href="">Reset</a>
                       <a class="btn-sm btn-info" href="">Delete</a>
