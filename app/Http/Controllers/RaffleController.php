@@ -92,6 +92,9 @@ class RaffleController extends Controller
 
     public function process(Request $request)
     {
+        $raffle = Raffle::find($request->id);
+        if (auth()->user()->id != $raffle->user_id)
+                    abort(403);
         $names = fopen($request->file('names')->path(), 'r');
         if ($names)
         {
@@ -140,7 +143,9 @@ class RaffleController extends Controller
 
     public function draw($raffle_id)
     {
-
+        $raffle = Raffle::find($raffle_id);
+        if (auth()->user()->id != $raffle->user_id)
+                    abort(403);
         $name = Name::where('raffle_id', $raffle_id)
                       ->where('picked', 0)
                       ->inRandomOrder()
@@ -169,5 +174,33 @@ class RaffleController extends Controller
         $result->save();
 
         return $draw;
+    }
+
+    public function reset($raffle_id)
+    {
+        $raffle = Raffle::find($raffle_id);
+        if (auth()->user()->id != $raffle->user_id)
+                    abort(403);
+        $names = Name::where('raffle_id', $raffle_id)->get();
+        $prizes = Prize::where('raffle_id', $raffle_id)->get();
+        $results = Result::where('raffle_id', $raffle_id)->get();
+        foreach($names as $name)
+        {
+            $name->picked = 0;
+            $name->save();
+        }
+
+        foreach($prizes as $prize)
+        {
+            $prize->picked = 0;
+            $prize->save();
+        }
+
+        foreach($results as $result)
+        {
+            $result->delete();
+        }
+
+        return back();
     }
 }
