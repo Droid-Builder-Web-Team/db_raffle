@@ -23,5 +23,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
+    Route::post('raffle/process', [RaffleController::class, 'process'])->name('raffle.process');
     Route::resource('raffle', RaffleController::class);
 });

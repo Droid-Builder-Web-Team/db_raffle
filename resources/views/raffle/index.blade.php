@@ -15,6 +15,7 @@
                   <th>Names</th>
                   <th>Prizes</th>
                   <th>Results</th>
+                  <th>Date</th>
                   <th>Actions</th>
                 </tr>
                 @forelse ($raffles as $raffle)
@@ -23,8 +24,9 @@
                     <td>{{ $raffle->names->count() }}</td>
                     <td>{{ $raffle->prizes->count() }}</td>
                     <td>{{ $raffle->results->count() }}</td>
+                    <td>{{ $raffle->created_at }}</td>
                     <td>
-                      <a class="btn-sm btn-info" href="">Edit</a>
+                      <a class="btn-sm btn-info" href="{{ route('raffle.edit', $raffle->id) }}">Edit</a>
                       <a class="btn-sm btn-info" href="">Draw</a>
                       <a class="btn-sm btn-info" href="">Results</a>
                       <a class="btn-sm btn-info" href="">Reset</a>

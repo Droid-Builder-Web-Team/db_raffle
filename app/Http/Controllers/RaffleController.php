@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Raffle;
+use App\Models\Name;
+use App\Models\Prize;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RaffleController extends Controller
 {
@@ -70,7 +73,7 @@ class RaffleController extends Controller
      */
     public function edit(Raffle $raffle)
     {
-        //
+        return view('raffle.edit', compact('raffle'));
     }
 
     /**
@@ -82,7 +85,45 @@ class RaffleController extends Controller
      */
     public function update(Request $request, Raffle $raffle)
     {
-        //
+
+
+    }
+
+    public function process(Request $request)
+    {
+        $names = fopen($request->file('names')->path(), 'r');
+        if ($names)
+        {
+            while (($name = fgets($names, 4096)) !== false ) {
+              $new_name = new Name;
+              $new_name->name = $name;
+              $new_name->picked = 0;
+              $new_name->raffle_id = $request->id;
+              $new_name->save();
+            }
+            if (!feof($names)) {
+              echo "Error: unexpected fgets() fail\n";
+            }
+            fclose($names);
+        }
+
+        $prizes = fopen($request->file('prizes')->path(), 'r');
+        if ($prizes)
+        {
+            while (($prize = fgets($prizes, 4096)) !== false ) {
+              $new_prize = new Prize;
+              $new_prize->name = $name;
+              $new_prize->picked = 0;
+              $new_prize->raffle_id = $request->id;
+              $new_prize->save();
+            }
+            if (!feof($prizes)) {
+              echo "Error: unexpected fgets() fail\n";
+            }
+            fclose($prizes);
+        }
+
+        return redirect()->route('raffle.index');
     }
 
     /**
