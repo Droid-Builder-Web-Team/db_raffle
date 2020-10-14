@@ -26,9 +26,10 @@
                     <td>{{ $raffle->results->count() }}</td>
                     <td>{{ $raffle->created_at }}</td>
                     <td>
-                      <a class="btn-sm btn-info" href="{{ route('raffle.edit', $raffle->id) }}">Edit</a>
+                      <a class="btn-sm btn-info" href="{{ route('raffle.view', $raffle->id) }}">View</a>
+                      <a class="btn-sm btn-info" href="{{ route('raffle.edit', $raffle->id) }}">Upload</a>
                       <a class="btn-sm btn-info" href="{{ route('raffle.show', $raffle->id) }}">Draw</a>
-                      <a class="btn-sm btn-info" href="">Results</a>
+                      <a class="btn-sm btn-info" href="{{ route('raffle.results', $raffle->id) }}">Results</a>
                       <a class="btn-sm btn-info" href="{{ route('raffle.reset', $raffle->id) }}">Reset</a>
                       <a class="btn-sm btn-info" href="">Delete</a>
                     </td>

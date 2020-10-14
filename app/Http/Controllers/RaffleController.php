@@ -19,7 +19,9 @@ class RaffleController extends Controller
      */
     public function index()
     {
-        $raffles = auth()->user()->raffles;
+        $raffles = Raffle::where('user_id', auth()->user()->id)
+                    ->OrderBy('created_at', 'desc')
+                    ->get();
         return view('raffle.index', compact('raffles'));
     }
 
@@ -174,6 +176,27 @@ class RaffleController extends Controller
         $result->save();
 
         return $draw;
+    }
+
+    public function view($raffle_id)
+    {
+        $raffle = Raffle::find($raffle_id);
+        if (auth()->user()->id != $raffle->user_id)
+                    abort(403);
+        $names = Name::where('raffle_id', $raffle_id)->get();
+        $prizes = Prize::where('raffle_id', $raffle_id)->get();
+
+        return view('raffle.view', compact('names', 'prizes', 'raffle'));
+    }
+
+    public function results($raffle_id)
+    {
+        $raffle = Raffle::find($raffle_id);
+        if (auth()->user()->id != $raffle->user_id)
+                    abort(403);
+        $results = Result::where('raffle_id', $raffle_id)->get();
+
+        return view('raffle.results', compact('results', 'raffle'));
     }
 
     public function reset($raffle_id)

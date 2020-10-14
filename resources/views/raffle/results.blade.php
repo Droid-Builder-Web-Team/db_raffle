@@ -10,17 +10,22 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
               <div class="card">
                 <div class="card-header">
-                  Create Raffle
+                  View Raffle - {{ $raffle->name}}
                 </div>
                 <div class="card-body">
-                  <form action="{{ route('raffle.store') }}" method="POST">
-                    @csrf
-                    <div class="form-group">
-                      <label for="raffleName">Name</label>
-                      <input type="text" id="raffleName" name="name" class="form-control" required="">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <table>
+                        <tr>
+                          <td>Name</td>
+                          <td>Prize</td>
+                        </tr>
+                          @foreach($results as $result)
+                            <tr><td>{{$result->name}}</td><td>{{ $result->prize }}</td></tr>
+                          @endforeach
+                      </table>
                     </div>
-                    <input type="Submit" name="Submit" value="Submit">
-                  </form>
+                  </div>
                 </div>
               </div>
             </div>
