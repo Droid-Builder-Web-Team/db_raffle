@@ -15,4 +15,6 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
-    ]);
+    ])
+    .sass('resources/sass/themes/droidbuilders/theme.scss', 'public/droidbuilders/theme.css')
+    .sass('resources/sass/themes/droidbuilders_xmas/theme.scss', 'public/droidbuilders_xmas/theme.css');

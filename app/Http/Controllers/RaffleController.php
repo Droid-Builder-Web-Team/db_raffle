@@ -45,6 +45,7 @@ class RaffleController extends Controller
     {
         $raffle = new Raffle;
         $raffle->name = $request->name;
+        $raffle->theme = $request->theme;
         $raffle->user_id = auth()->user()->id;
 
         try {
@@ -65,7 +66,8 @@ class RaffleController extends Controller
      */
     public function show(Raffle $raffle)
     {
-        return view('raffle.show', compact('raffle'));
+        $theme = $raffle->theme ?? 'default';
+        return view('raffle.themes.'.$theme.'.show', compact('raffle'));
     }
 
     /**
@@ -140,7 +142,7 @@ class RaffleController extends Controller
      */
     public function destroy(Raffle $raffle)
     {
-        //
+        
     }
 
     public function draw($raffle_id)

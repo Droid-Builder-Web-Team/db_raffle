@@ -1,0 +1,17 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Michroma');
+
+// Variables
+@import 'variables';
+
+// User Profile
+body{
+    background: $background;
+    color: $primaryText;
+    font: $font-family-sans-serif;
+    background-image: $headerBG;
+}
+
+.fullpage {
+  height: 100vh;
+}

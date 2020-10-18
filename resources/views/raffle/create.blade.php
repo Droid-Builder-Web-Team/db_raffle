@@ -19,6 +19,14 @@
                       <label for="raffleName">Name</label>
                       <input type="text" id="raffleName" name="name" class="form-control" required="">
                     </div>
+                    <div class="form-group">
+                      <label for="raffleTheme">Theme</label>
+                      <select name="theme">
+                        <option value="default">Default</option>
+                        <option value="droidbuilders">Droid Builders</option>
+                        <option value="droidbuilders_xmas">Droid Builders Xmas</option>
+                      </select>
+                    </div>
                     <input type="Submit" name="Submit" value="Submit">
                   </form>
                 </div>

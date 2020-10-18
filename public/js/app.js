@@ -19377,14 +19377,38 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/sass/themes/droidbuilders/theme.scss":
+/*!********************************************************!*\
+  !*** ./resources/sass/themes/droidbuilders/theme.scss ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/themes/droidbuilders_xmas/theme.scss":
+/*!*************************************************************!*\
+  !*** ./resources/sass/themes/droidbuilders_xmas/theme.scss ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!***********************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/css/app.css ***!
-  \***********************************************************/
+/*!******************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/themes/droidbuilders/theme.scss ./resources/sass/themes/droidbuilders_xmas/theme.scss ./resources/css/app.css ***!
+  \******************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /home/daz/Source/r2_builders/db_raffle/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /home/daz/Source/r2_builders/db_raffle/resources/sass/themes/droidbuilders/theme.scss */"./resources/sass/themes/droidbuilders/theme.scss");
+__webpack_require__(/*! /home/daz/Source/r2_builders/db_raffle/resources/sass/themes/droidbuilders_xmas/theme.scss */"./resources/sass/themes/droidbuilders_xmas/theme.scss");
 module.exports = __webpack_require__(/*! /home/daz/Source/r2_builders/db_raffle/resources/css/app.css */"./resources/css/app.css");
 
 

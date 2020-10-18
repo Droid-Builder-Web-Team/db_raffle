@@ -1,4 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
+    "/droidbuilders/theme.css": "/droidbuilders/theme.css",
+    "/droidbuilders_xmas/theme.css": "/droidbuilders_xmas/theme.css",
     "/css/app.css": "/css/app.css"
 }
