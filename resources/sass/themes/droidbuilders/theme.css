@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Michroma");
+body {
+  background: #05080D;
+  color: #DDDDDD;
+  font: "Michroma", sans-serif;
+  background-image: url("https://droidbuilders.uk/wp-content/uploads/2019/10/BGimage.png");
+}
+
+.fullpage {
+  height: 100vh;
+}
+/*# sourceMappingURL=theme.css.map */

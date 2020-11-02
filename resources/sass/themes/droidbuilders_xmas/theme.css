@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Michroma");
+body {
+  background: #05080D;
+  color: #DDDDDD;
+  font: "Michroma", sans-serif;
+}
+
+.fullpage {
+  height: 100vh;
+}
+
+.title {
+  font-size: 3rem;
+}
+/*# sourceMappingURL=theme.css.map */
