@@ -2,3 +2,31 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@font-face {
+    font-family: Aurebesh;
+    src: url("/fonts/aurebesh/Aurebesh.otf") format('otf');
+}
+
+.countdown-row {
+    display: flex;
+    align-items: center !important;
+    height: 100px !important;
+}
+
+#countdown-container {
+    display: hidden;
+    font-family: Aurebesh;
+    font-size: 125px;
+    line-height: 125px;
+}
+
+#countdown {
+    display: none;
+}
+
+#raffle-done-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+}
