@@ -1,4 +1,32 @@
 <x-draw-layout :raffle="$raffle">
+<style>
+
+/* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-box {
+  background-color: transparent;
+  width: 20vw;
+  height: 20vw;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+}
+
+@keyframes spinSnowflake {
+  50% {
+    transform: rotateY(180deg);
+  }
+
+}
+
+.animateSnowflake {
+  animation: spinSnowflake 2s;
+}
+
+.animateSnowflakeConstant {
+  animation: spinSnowflake 10s infinite linear;
+}
+</style>
 
     <script>
 
@@ -12,6 +40,7 @@
             draw();
             var count = 3;
             var countdownInterval;
+            $('#snowflake').removeClass('animateSnowflake');
             $("#raffle-controls").hide();
             $("#countdown-container").show();
             $("#countdown").html(count);
@@ -58,6 +87,7 @@
             $('#rafflePrize').text(drawResult['prize']);
             $('#namesLeft').text(drawResult['names_left']);
             $('#prizesLeft').text(drawResult['prizes_left']);
+            $('#snowflake').addClass('animateSnowflake');
             reset();
             if (drawResult['prizes_left'] == 0)
             {
@@ -84,6 +114,7 @@
         {
             $("#raffle-controls").hide();
             $("#raffle-done-container").show();
+            $('#snowflake').addClass('animateSnowflakeConstant');
         }
 
         $(document).ready(function() {
@@ -101,7 +132,7 @@
 
         <div class="row h-25">
             <div class="col-md-auto w-100 display-3 text-center" style="text-transform:uppercase; letter-spacing:5px;">
-                Droid Builders Raffle
+                Droid Builders UK Raffle
             </div>
         </div>
 
@@ -136,8 +167,10 @@
                 <div id="countdown"></div>
             </div>
         </div>
-
-        <img src="{{ asset( $theme.'/snowflake.png') }}" style="position: absolute; right: 0px; bottom: 0px;">
+        <div class="flip-box">
+          <img src="{{ '/'.$raffle->theme.'/snowflake.png' }}" id="snowflake">
+        </div>
+</div>
 
     </div>
 
