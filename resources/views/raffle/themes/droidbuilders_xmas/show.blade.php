@@ -77,7 +77,7 @@
         }
 
         /**
-         * Update the UI to display the "raffle ended" message and hide the 
+         * Update the UI to display the "raffle ended" message and hide the
          * raffle controls.
          */
         function onRaffleOver()
@@ -136,6 +136,8 @@
                 <div id="countdown"></div>
             </div>
         </div>
+
+        <img src="{{ asset( $theme.'/snowflake.png') }}" style="position: absolute; right: 0px; bottom: 0px;">
 
     </div>
 

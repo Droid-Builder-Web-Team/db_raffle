@@ -20,37 +20,6 @@
 
         <!-- Scripts -->
         @jquery
-        <script>
-        function updateDraw() {
-          console.log("Draw!!!!");
-          $.ajax({
-            url: "/raffle/draw/{{$raffle->id}}",
-            dataType: "json",
-            cache: false,
-            success: function(data) {
-              console.log(data);
-              $('#raffleName').text(data['name']);
-              $('#rafflePrize').text(data['prize']);
-              $('#namesLeft').text(data['names_left']);
-              $('#prizesLeft').text(data['prizes_left']);
-              if (data['prizes_left'] == 0) {
-                console.log("No more prizes left");
-                $('#draw').prop('disabled', true);
-                $('#draw').text('No More Prizes!');
-              }
-            }
-          });
-
-        }
-
-        $( document ).ready(function() {
-          if({{ $raffle->prizes_left()->count()}} == 0) {
-              $('#draw').prop('disabled', true);
-              $('#draw').text('No More Prizes!');
-          }
-      });
-
-        </script>
 
     </head>
     <body class="fullpage">
