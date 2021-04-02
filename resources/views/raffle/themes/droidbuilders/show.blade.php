@@ -95,8 +95,7 @@
 
     </script>
 
-    <div class="w-100 p-3 h-100"
-        style="background: linear-gradient(180deg,rgba(16, 20, 48, 1) 0%,rgba(0, 0, 0, 1) 100%);">
+    <div class="w-100 p-3 h-100">
 
         <div class="row h-25">
             <div class="col-md-auto w-100 display-3 text-center" style="text-transform:uppercase; letter-spacing:5px;">
